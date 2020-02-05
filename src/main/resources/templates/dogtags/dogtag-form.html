@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" style="text/css" th:href="@{/css/style.css}" href="/css/style.css"/>
+
+
+    <title>Dogtag Form</title>
+</head>
+<body>
+<div class="container bg-secondary rounded border-dark mt-5">
+    <h3 class="text-center">Add Dogtag</h3>
+    <hr>
+    <form action="#" th:action="@{/dogtags/save}" th:object="${dogtag}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="form-group row justify-content-center">
+            <label for="nickname" class="col-sm-2 col-form-label">Nickname:</label>
+            <input type="text" autocomplete="off" id="nickname" th:field="*{nickname}" class="form-control mb-4 col-3">
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="faction" class="col-sm-2 col-form-label">Faction:</label>
+            <select id="faction" th:field="*{faction}" class="form-control mb-4 col-4">
+                <option th:value="USEC" th:text="USEC">
+                <option th:value="BEAR" th:text="BEAR">
+            </select>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="level" class="col-sm-2 col-form-label">Level:</label>
+            <input type="number" min="1" max="70" id="level" th:field="*{level}" class="form-control mb-4 col-4">
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="date" class="col-sm-2 col-form-label">Date:</label>
+            <input type="text" autocomplete="off" id="date" th:field="*{date}" class="form-control mb-4 col-4">
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="killedBy" class="col-sm-2 col-form-label">Killed By:</label>
+            <input type="text" autocomplete="off" id="killedBy" th:field="*{killedBy}" class="form-control mb-4 col-4">
+        </div>
+        <div class="form-group row justify-content-center">
+            <label for="weapon" class="col-sm-2 col-form-label lb-md">Weapon:</label>
+            <input type="text" autocomplete="off" id="weapon" th:field="*{weapon}" class="form-control mb-4 col-4">
+        </div>
+        <div class="form-group row justify-content-center">
+            <button type="submit" class="btn btn-info col-1 mr-2">Add</button>
+            <a th:href="@{/dogtags/list}" class="btn btn-danger">Cancel</a>
+        </div>
+        <hr>
+    </form>
+
+</div>
+
+
+</body>
+</html>

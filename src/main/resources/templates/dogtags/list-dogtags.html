@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Dogtag List</title>
+
+    <link rel="stylesheet" style="text/css" th:href="@{/css/style.css}" href="/css/style.css"/>
+</head>
+<body>
+
+    <div class="container bg-secondary rounded border-dark mt-5">
+        <h3 class="text-center">Obtained Dogtags</h3>
+        <hr>
+        <a th:href="@{/dogtags/showAddForm}"
+            class="btn btn-primary btn-sm mb-3">
+            Add Dogtag
+        </a>
+        <table class="table table-dark table-striped table-bordered table-sm rounded border-dark">
+            <thead>
+                <th>Nickname</th>
+                <th>Faction</th>
+                <th>Level</th>
+                <th>Date</th>
+                <th>Killed By</th>
+                <th>Weapon</th>
+            </thead>
+            <tr th:each="tempDogtag : ${dogtags}">
+                <td th:text="${tempDogtag.nickname}"></td>
+                <td th:text="${tempDogtag.faction}"></td>
+                <td th:text="${tempDogtag.level}"></td>
+                <td th:text="${tempDogtag.date}"></td>
+                <td th:text="${tempDogtag.killedBy}"></td>
+                <td th:text="${tempDogtag.weapon}"></td>
+                <td>
+                    <a th:href="@{/dogtags/showUpdateForm(dogtagId=${tempDogtag.id})}" class="btn btn-primary mr-2">Update</a>
+
+                    <a th:href="@{/dogtags/delete(dogtagId=${tempDogtag.id})}" class="btn btn-danger"
+                        onclick="if(!(confirm('Are you sure you want to delete dogtag?'))) return false;">Delete</a>
+                </td>
+
+            </tr>
+
+
+        </table>
+
+        <a th:href="@{/}"
+            class="btn btn-info mb-2">Back Home</a>
+
+
+    </div>
+
+</body>
+</html>
